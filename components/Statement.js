@@ -5,31 +5,39 @@ import type { Statement as StatementType, VeracityKey } from '../lib/types'
 type StatementProps = {
   ...StatementType,
   children: string,
+  onClick: (id: string) => void,
 }
 
-const getColorForVeracity = (key: VeracityKey): string => {
+const getClassForVeracity = (key: VeracityKey): string => {
   switch (key) {
     case 'true':
-      return 'green'
+      return 'pravda'
     case 'false':
-      return 'red'
+      return 'nepravda'
     case 'unverifiable':
-      return 'yellow'
+      return 'neoveritelne'
     case 'misleading':
-      return 'orange'
+      return 'zavadejici'
     default:
-      ;(key: empty)
+      ;(key: empty) // eslint-disable-line
       return null
   }
 }
 
-const Statement = ({ children, assessment }: StatementProps) => (
-  <b>
-    {children}
-    <style jsx>{`b {color: ${getColorForVeracity(
-      assessment.veracity.key,
-    )}}`}</style>
-  </b>
-)
+const Statement = ({ children, assessment, onClick }: StatementProps) => {
+  let statementRef
+
+  return (
+    <a
+      onClick={() => onClick(assessment.id, statementRef)}
+      className={`vyrok ${getClassForVeracity(assessment.veracity.key)}`}
+      ref={ref => {
+        statementRef = ref
+      }}
+    >
+      {children}
+    </a>
+  )
+}
 
 export default Statement

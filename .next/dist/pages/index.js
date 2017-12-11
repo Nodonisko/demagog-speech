@@ -40,9 +40,19 @@ var _api = require('../lib/api');
 
 var _api2 = _interopRequireDefault(_api);
 
-var _link = require('next/dist/lib/link.js');
+var _Page = require('../components/Page');
 
-var _link2 = _interopRequireDefault(_link);
+var _Page2 = _interopRequireDefault(_Page);
+
+var _HomeHeading = require('../components/HomeHeading');
+
+var _HomeHeading2 = _interopRequireDefault(_HomeHeading);
+
+var _ArticleListItem = require('../components/ArticleListItem');
+
+var _ArticleListItem2 = _interopRequireDefault(_ArticleListItem);
+
+var _ramda = require('ramda');
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -65,34 +75,41 @@ var IndexPage = function (_React$Component) {
     value: function render() {
       var articles = this.props.articles;
 
-      return React.createElement('div', {
+      return React.createElement(_Page2.default, { title: '\xDAvod', __source: {
+          fileName: _jsxFileName,
+          lineNumber: 26
+        }
+      }, React.createElement(_HomeHeading2.default, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 22
+          lineNumber: 27
         }
-      }, articles.map(function (_ref) {
-        var slug = _ref.slug;
-        return React.createElement('div', {
-          __source: {
+      }), React.createElement('div', { className: 'list-content', __source: {
+          fileName: _jsxFileName,
+          lineNumber: 28
+        }
+      }, React.createElement('div', { className: 'container-fluid', __source: {
+          fileName: _jsxFileName,
+          lineNumber: 29
+        }
+      }, React.createElement('div', { className: 'row', __source: {
+          fileName: _jsxFileName,
+          lineNumber: 30
+        }
+      }, articles.filter(function (article) {
+        return !(0, _ramda.isEmpty)(article.source.transcript);
+      }).map(function (article) {
+        return React.createElement(_ArticleListItem2.default, { article: article, key: article.slug, __source: {
             fileName: _jsxFileName,
-            lineNumber: 24
+            lineNumber: 34
           }
-        }, React.createElement(_link2.default, { href: { pathname: '/article', query: { slug: slug } }, __source: {
-            fileName: _jsxFileName,
-            lineNumber: 25
-          }
-        }, React.createElement('a', {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 26
-          }
-        }, slug)));
-      }));
+        });
+      })))));
     }
   }], [{
     key: 'getInitialProps',
     value: function () {
-      var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
+      var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
         var articles;
         return _regenerator2.default.wrap(function _callee$(_context) {
           while (1) {
@@ -116,7 +133,7 @@ var IndexPage = function (_React$Component) {
       }));
 
       function getInitialProps() {
-        return _ref2.apply(this, arguments);
+        return _ref.apply(this, arguments);
       }
 
       return getInitialProps;
@@ -127,4 +144,4 @@ var IndexPage = function (_React$Component) {
 }(React.Component);
 
 exports.default = IndexPage;
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBhZ2VzL2luZGV4LmpzIl0sIm5hbWVzIjpbIlJlYWN0IiwiYXBpIiwiTGluayIsIkluZGV4UGFnZSIsImFydGljbGVzIiwicHJvcHMiLCJtYXAiLCJzbHVnIiwicGF0aG5hbWUiLCJxdWVyeSIsImdldEFsbEFydGljbGVzIiwiQ29tcG9uZW50Il0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQ0EsQUFBTzs7SUFBUCxBQUFZOztBQUNaLEFBQU8sQUFBUzs7OztBQUNoQixBQUFPOzs7Ozs7Ozs7OztJLEFBT0Q7Ozs7Ozs7Ozs7OzZCQVFLO1VBQUEsQUFDQyxXQUFhLEtBRGQsQUFDbUIsTUFEbkIsQUFDQyxBQUNSOzttQkFDRSxjQUFBOztvQkFBQTtzQkFBQSxBQUNHO0FBREg7QUFBQSxPQUFBLFdBQ0csQUFBUyxJQUFJLGdCQUFBO1lBQUEsQUFBRyxZQUFILEFBQUc7cUJBQ2YsY0FBQTs7c0JBQUE7d0JBQUEsQUFDRTtBQURGO0FBQUEsU0FBQSxRQUNFLEFBQUMsZ0NBQUssTUFBTSxFQUFFLFVBQUYsQUFBWSxZQUFZLE9BQU8sRUFBRSxNQUE3QyxBQUFZLEFBQStCO3NCQUEzQzt3QkFBQSxBQUNFO0FBREY7aUJBQ0UsY0FBQTs7c0JBQUE7d0JBQUEsQUFBSTtBQUFKO0FBQUEsV0FIUSxBQUNaLEFBQ0UsQUFDRTtBQUxWLEFBQ0UsQUFDRyxBQVNOOzs7Ozs7Ozs7Ozs7dUJBbkJ3QixjQUFBLEFBQUksQTs7bUJBQXJCO0E7OzRCLEFBQ0M7QUFBQSxBQUNMOzs7Ozs7Ozs7Ozs7Ozs7Ozs7O0VBSmtCLE1BQU0sQSxBQXdCOUI7O2tCQUFBLEFBQWUiLCJmaWxlIjoiaW5kZXguanM/ZW50cnkiLCJzb3VyY2VSb290IjoiL1VzZXJzL2RhbmllbC93ZWJkZXYvZGVtYWdvZyJ9
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBhZ2VzL2luZGV4LmpzIl0sIm5hbWVzIjpbIlJlYWN0IiwiYXBpIiwiUGFnZSIsIkhvbWVIZWFkaW5nIiwiQXJ0aWNsZUxpc3RJdGVtIiwiaXNFbXB0eSIsIkluZGV4UGFnZSIsImFydGljbGVzIiwicHJvcHMiLCJmaWx0ZXIiLCJhcnRpY2xlIiwic291cmNlIiwidHJhbnNjcmlwdCIsIm1hcCIsInNsdWciLCJnZXRBbGxBcnRpY2xlcyIsIkNvbXBvbmVudCJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUNBLEFBQU87O0lBQVAsQUFBWTs7QUFDWixBQUFPLEFBQVM7Ozs7QUFFaEIsQUFBTyxBQUFVOzs7O0FBQ2pCLEFBQU8sQUFBaUI7Ozs7QUFDeEIsQUFBTyxBQUFxQjs7OztBQUM1QixBQUFTOzs7Ozs7Ozs7SSxBQU1IOzs7Ozs7Ozs7Ozs2QkFRSztVQUFBLEFBQ0MsV0FBYSxLQURkLEFBQ21CLE1BRG5CLEFBQ0MsQUFFUjs7bUJBQ0UsQUFBQyxnQ0FBSyxPQUFOLEFBQVk7b0JBQVo7c0JBQUEsQUFDRTtBQURGO09BQUEsUUFDRSxBQUFDOztvQkFBRDtzQkFERixBQUNFLEFBQ0E7QUFEQTtBQUFBLGdCQUNBLGNBQUEsU0FBSyxXQUFMLEFBQWU7b0JBQWY7c0JBQUEsQUFDRTtBQURGO2VBQ0UsY0FBQSxTQUFLLFdBQUwsQUFBZTtvQkFBZjtzQkFBQSxBQUNFO0FBREY7ZUFDRSxjQUFBLFNBQUssV0FBTCxBQUFlO29CQUFmO3NCQUFBLEFBQ0c7QUFESDtrQkFDRyxBQUNFLE9BQU8sbUJBQUE7ZUFBVyxDQUFDLG9CQUFRLFFBQUEsQUFBUSxPQUE1QixBQUFZLEFBQXVCO0FBRDVDLFNBQUEsQUFFRSxJQUFJLG1CQUFBO3FCQUNILEFBQUMsMkNBQWdCLFNBQWpCLEFBQTBCLFNBQVMsS0FBSyxRQUF4QyxBQUFnRDtzQkFBaEQ7d0JBREcsQUFDSDtBQUFBO1NBQUE7QUFUZCxBQUNFLEFBRUUsQUFDRSxBQUNFLEFBQ0csQUFVWjs7Ozs7Ozs7Ozs7O3VCQXpCd0IsY0FBQSxBQUFJLEE7O21CQUFyQjtBOzs0QkFDQyxBO0FBQUEsQUFDTDs7Ozs7Ozs7Ozs7Ozs7Ozs7OztFQUprQixNQUFNLEEsQUE4QjlCOztrQkFBQSxBQUFlIiwiZmlsZSI6ImluZGV4LmpzP2VudHJ5Iiwic291cmNlUm9vdCI6Ii9Vc2Vycy9kYW5pZWwvd2ViZGV2L2RlbWFnb2cifQ==

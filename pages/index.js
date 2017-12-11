@@ -1,8 +1,11 @@
 // @flow
 import * as React from 'react'
 import api from '../lib/api'
-import Link from 'next/link'
 import type { ArticleList } from '../lib/types'
+import Page from '../components/Page'
+import HomeHeading from '../components/HomeHeading'
+import ArticleListItem from '../components/ArticleListItem'
+import { isEmpty } from 'ramda'
 
 type IndexPageProps = {
   articles: ArticleList,
@@ -18,16 +21,22 @@ class IndexPage extends React.Component<IndexPageProps> {
 
   render() {
     const { articles } = this.props
+
     return (
-      <div>
-        {articles.map(({ slug }) => (
-          <div>
-            <Link href={{ pathname: '/article', query: { slug } }}>
-              <a>{slug}</a>
-            </Link>
+      <Page title="Úvod">
+        <HomeHeading />
+        <div className="list-content">
+          <div className="container-fluid">
+            <div className="row">
+              {articles
+                .filter(article => !isEmpty(article.source.transcript))
+                .map(article => (
+                  <ArticleListItem article={article} key={article.slug} />
+                ))}
+            </div>
           </div>
-        ))}
-      </div>
+        </div>
+      </Page>
     )
   }
 }
