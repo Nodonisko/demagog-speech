@@ -21,7 +21,9 @@ const SidebarInfo = ({
     <ul className="list-group">
       <li className="list-group-item list-group-item-light d-flex justify-content-between align-items-center">
         Publikováno
-        <strong>{moment(publishedAt).format('D. MMMM YYYY')}</strong>
+        <strong>
+          {moment(publishedAt.slice(0, 10)).format('D. MMMM YYYY')}
+        </strong>
       </li>
       <li className="list-group-item list-group-item-light d-flex justify-content-between align-items-center">
         Moderátor

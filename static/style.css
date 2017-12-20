@@ -159,6 +159,7 @@ A.vyrok {
   background-color: #e5e5e5;
   color: #666;
   transition: all 0.1s ease-in-out;
+  cursor: pointer;
 }
 
 A.vyrok.active {
@@ -233,7 +234,7 @@ A.vyrok.neoveritelne.active {
 }
 
 .context-window p {
-  line-height: 1.5 !important
+  line-height: 1.5 !important;
 }
 
 .context-window.active {

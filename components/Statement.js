@@ -24,17 +24,27 @@ const getClassForVeracity = (key: VeracityKey): string => {
   }
 }
 
-const Statement = ({ children, assessment, onClick, id }: StatementProps) => {
+const Statement = ({
+  children,
+  assessment,
+  onClick,
+  id,
+  active,
+}: StatementProps) => {
   let statementRef
 
   const handleOnClick = () => {
     onClick(id, statementRef)
   }
 
+  const activeClassName = active ? 'active' : ''
+
   return (
     <a
       onClick={handleOnClick}
-      className={`vyrok ${getClassForVeracity(assessment.veracity.key)}`}
+      className={`vyrok ${getClassForVeracity(
+        assessment.veracity.key,
+      )} ${activeClassName}`}
       ref={ref => {
         statementRef = ref
       }}

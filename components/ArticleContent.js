@@ -55,14 +55,14 @@ class ArticleContent extends React.Component<
     let replacedText = text
     this.props.statementsLocations.forEach(location => {
       const statement = this.findAssesmentById(location.id)
-
+      const fragmentWhiteChars = location.fragment.match(/\r?\n|\r/g)
       if (!statement) return
       replacedText = reactStringReplace(
         replacedText,
         new RegExp(
           `(${escapeStringRegexp(location.fragment).replace(
             /\r?\n|\r/g,
-            '(\\s*)(.*)',
+            fragmentWhiteChars ? '(\\s*)(.*)' : '',
           )})`,
           'mi',
         ),
@@ -71,6 +71,10 @@ class ArticleContent extends React.Component<
             {...statement}
             onClick={this.handleStatementClick}
             key={location.id}
+            active={
+              this.state.statementPopup &&
+              location.id === this.state.statementPopup.id
+            }
           >
             {match}
           </Statement>
