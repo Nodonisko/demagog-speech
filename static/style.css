@@ -232,6 +232,10 @@ A.vyrok.neoveritelne.active {
   // max-height: 300px;
 }
 
+.context-window p {
+  line-height: 1.5 !important
+}
+
 .context-window.active {
   opacity: 1;
   transform: scale(1);
