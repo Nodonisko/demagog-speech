@@ -3,17 +3,19 @@ import * as React from 'react'
 import type {
   Statement as StatementType,
   StatementLocation,
+  Article,
 } from '../lib/types'
 import Statement from './Statement'
 import { find, path } from 'ramda'
 import reactStringReplace from 'react-string-replace'
 import Sidebar from './Sidebar'
 import StatementPopup from './StatementPopup'
+import escapeStringRegexp from 'escape-string-regexp'
+import SidebarInfo from './SidebarInfo'
 
 type ArticleContentProps = {
-  content: string,
-  statements: Array<StatementType>,
   statementsLocations: Array<StatementLocation>,
+  article: Article,
 }
 
 type ArticleContentState = {
@@ -31,7 +33,7 @@ class ArticleContent extends React.Component<
   }
 
   findAssesmentById = (id: string) => {
-    const { statements } = this.props
+    const { article: { statements } } = this.props
     const statement = find(val => val.id === id)(statements)
 
     return statement
@@ -51,41 +53,43 @@ class ArticleContent extends React.Component<
 
   insertMarks = (text: string) => {
     let replacedText = text
-    console.log(this.props.statementsLocations)
-    this.props.statementsLocations
-      .map(location => ({
-        content: text.slice(+location.start, +location.end),
-        id: location.id,
-      }))
-      .forEach(location => {
-        console.log(location, this.props.statements)
-        const statement = this.findAssesmentById(location.id)
-        console.log(statement)
-        if (!statement) return
+    this.props.statementsLocations.forEach(location => {
+      const statement = this.findAssesmentById(location.id)
 
-        replacedText = reactStringReplace(
-          replacedText,
-          location.content,
-          match => (
-            <Statement {...statement} onClick={this.handleStatementClick}>
-              {match}
-            </Statement>
-          ),
-        )
-      })
+      if (!statement) return
+      replacedText = reactStringReplace(
+        replacedText,
+        new RegExp(
+          `(${escapeStringRegexp(location.fragment).replace(
+            /\r?\n|\r/g,
+            '(\\s*)(.*)',
+          )})`,
+          'mi',
+        ),
+        match => (
+          <Statement
+            {...statement}
+            onClick={this.handleStatementClick}
+            key={location.id}
+          >
+            {match}
+          </Statement>
+        ),
+      )
+    })
 
     return replacedText
   }
 
   render() {
-    const { content } = this.props
+    const { article: { source }, article } = this.props
     const { statementPopup, statementPopupOffset } = this.state
     return (
       <div className="article-content">
         <div className="container-fluid">
           <div className="row ">
             <div className="col offset-sm-1">
-              {this.insertMarks(content)}
+              {this.insertMarks(source.transcript)}
               <style jsx>{`
                 div {
                   white-space: pre-wrap;
@@ -93,12 +97,19 @@ class ArticleContent extends React.Component<
               `}</style>
             </div>
             <Sidebar>
+              <SidebarInfo
+                medium={source.medium.name}
+                mediumUrl={source.source_url}
+                moderatorName={source.media_personality.name}
+                publishedAt={article.published_at}
+              />
               <StatementPopup
                 statement={statementPopup}
                 offset={statementPopupOffset}
                 onClose={this.handleStatementPopupClose}
               />
             </Sidebar>
+            <div className="col-sm-1" />
           </div>
         </div>
       </div>

@@ -5,7 +5,7 @@ import type { Statement as StatementType, VeracityKey } from '../lib/types'
 type StatementProps = {
   ...StatementType,
   children: string,
-  onClick: (id: string) => void,
+  onClick: (string, ?Object) => void,
 }
 
 const getClassForVeracity = (key: VeracityKey): string => {
@@ -24,12 +24,16 @@ const getClassForVeracity = (key: VeracityKey): string => {
   }
 }
 
-const Statement = ({ children, assessment, onClick }: StatementProps) => {
+const Statement = ({ children, assessment, onClick, id }: StatementProps) => {
   let statementRef
+
+  const handleOnClick = () => {
+    onClick(id, statementRef)
+  }
 
   return (
     <a
-      onClick={() => onClick(assessment.id, statementRef)}
+      onClick={handleOnClick}
       className={`vyrok ${getClassForVeracity(assessment.veracity.key)}`}
       ref={ref => {
         statementRef = ref

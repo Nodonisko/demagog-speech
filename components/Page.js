@@ -19,6 +19,11 @@ const Page = ({ children, title }: PageProps) => (
         crossOrigin="anonymous"
       />
       <link rel="stylesheet" href="/static/style.css" />
+      <link
+        rel="shortcut icon"
+        href="/static/favicon.png"
+        type="image/x-icon"
+      />
       <meta name="language" content="Czech" />
       <title>{title} - Demagog.cz</title>
     </Head>

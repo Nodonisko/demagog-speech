@@ -8,9 +8,6 @@
       "jsx": true
     }
   },
-  "globals": [
-    "fetch",
-  ],
   "extends": [
     "airbnb",
     "plugin:react/recommended",

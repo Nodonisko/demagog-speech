@@ -226,6 +226,7 @@ A.vyrok.neoveritelne.active {
   border-collapse: collapse;
   transform: scale(0.95);
   transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.15s;
+  z-index: 10;
   // overflow-x: visible;
   // overflow-y: scroll;
   // max-height: 300px;
@@ -341,6 +342,7 @@ footer .social a:hover img {
   .card {
     width: 48%;
   }
+
   .context-window {
     top: auto !important;
     bottom: 0;
@@ -373,20 +375,25 @@ footer .social a:hover img {
   .jumbotron.landing {
     margin-bottom: 0.5rem;
   }
+
   .list-content .heading {
     padding-bottom: 1.6rem;
   }
+
   .list-content .container {
     padding-top: 2rem;
   }
+
   .list-content .container-fluid .row {
     margin-left: -15px;
     margin-right: -15px;
   }
+
   .card {
     width: 96%;
     margin: 1% 2%;
   }
+
   .offset-sm-1 {
     margin-left: 0;
   }

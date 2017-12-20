@@ -23,11 +23,12 @@ class ArticlePage extends React.Component<ArticlePageProps> {
 
   render() {
     const { article, statementsLocations } = this.props
-    const { title, perex, illustration } = article
+    if (!article) return null
+    const { title, perex, illustration, published_at } = article
 
     return (
       <Page title={title}>
-        {article && (
+        {
           <div>
             <ArticleHeading
               title={title}
@@ -36,11 +37,10 @@ class ArticlePage extends React.Component<ArticlePageProps> {
             />
             <ArticleContent
               statementsLocations={statementsLocations}
-              content={article.source.transcript}
-              statements={article.statements}
+              article={article}
             />
           </div>
-        )}
+        }
       </Page>
     )
   }

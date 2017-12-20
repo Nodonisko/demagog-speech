@@ -5,7 +5,7 @@ type ArticleHeadingProps = {
   image: string,
   title: string,
   subtitle: string,
-  speakerImage: string,
+  speakerImage?: string,
 }
 
 const ArticleHeading = ({
