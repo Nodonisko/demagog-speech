@@ -21,7 +21,6 @@ const NavBar = () => (
     </Link>
     <div id="navbarColor01">
       <ul className="navbar-nav mr-auto">
-        <NavBarLink href="/">Domů</NavBarLink>
         <NavBarLink href="/podporit">Podpořit</NavBarLink>
       </ul>
     </div>

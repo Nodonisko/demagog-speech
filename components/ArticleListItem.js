@@ -12,13 +12,21 @@ const ArticleListItem = ({
   article: { slug, illustration, title, perex },
 }: ArticleListItemProps) => (
   <div className="card">
-    <img
-      className="card-img-top"
-      src={`https://demagog.cz/${illustration}`}
-      alt={title}
-    />
+    <Link prefetch href={{ pathname: '/article', query: { slug } }}>
+      <a>
+        <img
+          className="card-img-top"
+          src={`https://demagog.cz/${illustration}`}
+          alt={title}
+        />
+      </a>
+    </Link>
     <div className="card-body">
-      <h4 className="card-title">{title}</h4>
+      <Link prefetch href={{ pathname: '/article', query: { slug } }}>
+        <a className="card-title-link">
+          <h4 className="card-title">{title}</h4>
+        </a>
+      </Link>
       <p className="card-text">{removeHtmlTags(perex).slice(0, 135)}...</p>
       <Link prefetch href={{ pathname: '/article', query: { slug } }}>
         <a className="btn btn-primary">Číst dál</a>

@@ -69,6 +69,14 @@ aside .list-group strong {
   border-collapse: collapse;
 }
 
+.card a img {
+  cursor: pointer;
+}
+
+.card .card-title-link {
+  color: #212529;
+}
+
 .jumbotron.landing {
   background-color: #fff;
   padding-bottom: 2rem;
