@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "heroku-postbuild": "next build"
   },
   "dependencies": {
     "babel-eslint": "^8.0.3",
