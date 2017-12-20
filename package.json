@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p $PORT",
     "heroku-postbuild": "next build"
   },
   "dependencies": {
@@ -23,6 +23,7 @@
     "graphql-request": "^1.4.0",
     "isomorphic-fetch": "^2.2.1",
     "next": "^4.2.1",
+    "postcss-sass": "^0.2.0",
     "prettier": "^1.9.0",
     "prettier-eslint": "^8.2.5",
     "prettier-stylelint": "^0.4.2",
