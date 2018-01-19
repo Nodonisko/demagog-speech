@@ -177,46 +177,38 @@ A.vyrok.active {
 }
 
 A.vyrok.pravda {
-  color: #0060ff;
-  background-color: #e5efff;
+  background-color: #0060ff;
+  color: #e5efff;
 }
 
 A.vyrok.pravda.active {
-  background-color: #0060ff;
-  color: #e5efff;
   box-shadow: 0 0 10px #0060ff;
 }
 
 A.vyrok.nepravda {
-  background-color: #fbf5e5;
-  color: #dea200;
+  background-color: #dea200;
+  color: #fbf5e5;
 }
 
 A.vyrok.nepravda.active {
-  background-color: #dea200;
-  color: #fbf5e5;
   box-shadow: 0 0 10px #dea200;
 }
 
 A.vyrok.zavadejici {
-  background-color: #fdefeb;
-  color: #f26538;
+  background-color: #f26538;
+  color: #fdefeb;
 }
 
 A.vyrok.zavadejici.active {
-  background-color: #f26538;
-  color: #fdefeb;
   box-shadow: 0 0 10px #f26538;
 }
 
 A.vyrok.neoveritelne {
-  background-color: #dee3e6;
-  color: #595b5c;
+  background-color: #595b5c;
+  color: #dee3e6;
 }
 
 A.vyrok.neoveritelne.active {
-  background-color: #595b5c;
-  color: #dee3e6;
   box-shadow: 0 0 10px #595b5c;
 }
 
