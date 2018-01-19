@@ -11,7 +11,7 @@ const Footer = () => (
             IČ: 05 14 05 44, se sídlem Tomešova 568/6, Staré Brno, 602 00 Brno
             zapsaný ve spolkovém rejstříku u Krajského soudu v Brně.{' '}
           </p>
-          <p>Bankovní účet 2185401001/5500 vedený u Raiffeisenbank, a.s.</p>
+          <p>Bankovní účet 9711283001/5500 vedený u Raiffeisenbank, a.s.</p>
         </div>
         <div className="col">
           <p className="float-right text-right social">
